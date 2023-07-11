@@ -1,0 +1,16 @@
+experiment:
+    seed : 2022
+    training : true
+    pretrain : true
+
+hyperparams:
+    batch_size   : 16
+    lr           : 0.0005
+    weight_decay : 0
+    epochs       : 100
+    model_name   : 'resnet'
+
+dataset:
+    dataset_dir   : 'CAFA5'
+    train_dir     : 'train'
+    val_dir       : 'val'
