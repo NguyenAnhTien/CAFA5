@@ -32,7 +32,7 @@ class ProteinTranslator(object):
         attention_mask = torch.tensor(ids['attention_mask']).to(self.accelerator)
         embedding = self.translator(input_ids=input_ids,\
                                     attention_mask=attention_mask)
-        embedding = embedding[0, : seq_len]
+        embedding = embedding.last_hidden_state[0, : seq_len]
         embedding = embedding.mean(dim=0)
         embedding = embedding.cpu().numpy()
         return embedding

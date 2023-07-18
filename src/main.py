@@ -30,8 +30,8 @@ if __name__ == "__main__":
                                                     help='configuration file')
     parser.add_argument('--phase', type=str, default='train')
     parser.add_argument('--command', help='CLI commands')
-    parser.add_argument('--devices', help='number of devices')
-    parser.add_argument('--gpu', help='GPU id')
+    parser.add_argument('--devices', type=int, default=1, help='number of devices')
+    parser.add_argument('--gpu', type=int, help='GPU id')
     args = parser.parse_args()
 
     configs = Configurer(args.configs)
