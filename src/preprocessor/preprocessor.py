@@ -35,10 +35,10 @@ class Preprocessor(object):
             labels = labels[constants.TERM].values.tolist()
             labels = labels_ids.isin(labels).values.astype(float)
             data.append({
-                constants.ID: protien_id,
-                constants.SEQUENCE: sequence,
-                constants.EMBEDDING: embedding,
-                constants.LABEL: labels
+                constants.ID        : protien_id,
+                constants.LABEL     : labels,
+                constants.SEQUENCE  : sequence,
+                constants.EMBEDDING : embedding
             })
         train_data, val_data = utils.split_data(data, self.configs.val_size)
         return train_data, val_data
