@@ -14,7 +14,7 @@ def preprocess(
         args: argparse.Namespace,
         configs: Configurer
     ) -> None:
-    translator = ProteinTranslator()
+    translator = ProteinTranslator(configs)
     preprocessor = Preprocessor(args.phase, configs, translator)
     train_data, val_data = preprocessor()
     utils.write_pkl(train_data, utils.join_path((configs.preprocess_dir,\
