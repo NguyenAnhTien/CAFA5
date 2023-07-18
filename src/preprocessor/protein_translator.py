@@ -20,6 +20,7 @@ class ProteinTranslator(object):
             self,
             sequence: str
         ):
+        seq_len = len(sequence)
         sequence = ' '.join(list(sequence))
         sequence = (sequence, )
         ids = self.tokenizer.batch_encode_plus(sequence,\
@@ -29,7 +30,8 @@ class ProteinTranslator(object):
         attention_mask = torch.tensor(ids['attention_mask'])
         embedding = self.translator(input_ids=input_ids,\
                                     attention_mask=attention_mask)
-        embedding = embedding[2].cpu().numpy()
+        embedding = embedding[0, : seq_len]
+        embedding = embedding.mean(dim=0)
         return embedding
 
     def define_translator(
