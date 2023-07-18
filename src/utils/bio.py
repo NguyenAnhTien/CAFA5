@@ -6,7 +6,7 @@ from Bio import SeqIO
 
 def read_fasta(
         fasta_file: str
-    ) -> list:
+    ) -> dict:
     sequences = SeqIO.parse(fasta_file, "fasta")
-    sequences_dict = SeqIO.to_dict(sequences)
-    return sequences_dict
+    sequences = SeqIO.to_dict(sequences)
+    return sequences

@@ -1,16 +1,23 @@
 experiment:
-    seed : 2022
-    training : true
-    pretrain : true
+    seed                : 2023
+    training            : true
+    pretrain            : true
 
 hyperparams:
-    batch_size   : 16
-    lr           : 0.0005
-    weight_decay : 0
-    epochs       : 100
-    model_name   : 'resnet'
+    batch_size          : 16
+    lr                  : 0.0005
+    weight_decay        : 0
+    epochs              : 100
+    model_name          : 'resnet'
 
 dataset:
-    dataset_dir   : 'CAFA5'
-    train_dir     : 'train'
-    val_dir       : 'val'
+    dataset_dir         : 'CAFA5'
+    train_dir           : 'train'
+    train_data          : 'train_sequences.fasta'
+    train_labels        : 'train_terms.tsv'
+    sep                 : '\t'
+    val_size            : 0.2
+
+T5Model:
+    t5_checkpoint       : "Rostlab/prot_t5_xl_half_uniref50-enc"
+    t5_local_files_only : True

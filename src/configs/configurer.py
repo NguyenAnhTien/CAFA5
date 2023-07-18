@@ -12,6 +12,7 @@ class Configurer(object):
         ) -> None:
         self.setup()
         self.parse(config_file)
+        self.dataset_dir = utils.join_path((self.data_dir, self.dataset_dir))
 
     def setup(
             self
