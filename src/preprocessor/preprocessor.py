@@ -14,7 +14,7 @@ class Preprocessor(object):
             self,
             phase: str,
             configs: Configurer,
-            translator: ProteinTranslator
+            translator: ProteinTranslator,
         ):
         self.phase = phase
         self.configs = configs

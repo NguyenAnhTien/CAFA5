@@ -14,7 +14,8 @@ def preprocess(
         args: argparse.Namespace,
         configs: Configurer
     ) -> None:
-    translator = ProteinTranslator(configs)
+    accelerator = 'cuda' if args.gpu > -1 else 'cpu'
+    translator = ProteinTranslator(configs, accelerator)
     preprocessor = Preprocessor(args.phase, configs, translator)
     train_data, val_data = preprocessor()
     utils.write_pkl(train_data, utils.join_path((configs.preprocess_dir,\
@@ -29,6 +30,8 @@ if __name__ == "__main__":
                                                     help='configuration file')
     parser.add_argument('--phase', type=str, default='train')
     parser.add_argument('--command', help='CLI commands')
+    parser.add_argument('--devices', help='number of devices')
+    parser.add_argument('--gpu', help='GPU id')
     args = parser.parse_args()
 
     configs = Configurer(args.configs)
