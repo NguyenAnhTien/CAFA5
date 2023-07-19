@@ -18,11 +18,8 @@ def preprocess(
     translator = ProteinTranslator(configs, accelerator)
     preprocessor = Preprocessor(args.phase, configs, translator)
     train_data, val_data = preprocessor()
-    utils.write_pkl(train_data, utils.join_path((configs.preprocess_dir,\
-                                        constants.TRAIN, constants.TRAIN_DATA)))
-    utils.write_pkl(val_data, utils.join_path((configs.preprocess_dir,\
-                                        constants.VAL, constants.VAL_DATA)))
-    
+    preprocessor.save_data(constants.TRAIN, train_data)
+    preprocessor.save_data(constants.VAL, val_data)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

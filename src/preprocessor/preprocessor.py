@@ -86,3 +86,13 @@ class Preprocessor(object):
         label_file = utils.join_path((configs.dataset_dir, phase,\
                                                         configs.train_labels))
         return label_file
+
+    def save_data(
+            self,
+            phase: str,
+            data: list,    
+        ):
+        for idx, sample in tqdm.tqdm(enumerate(data)):
+            saved_file = utils.join_path((self.configs.preprocess_dir, phase,))
+            saved_file = utils.join_path((saved_file, f'{idx}.pkl'))
+            utils.write_pkl(saved_file, sample)
